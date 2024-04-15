@@ -1,5 +1,6 @@
 // Constants
 // Заголовочные файлы не компилируются
+
 #pragma once
 
 #define tab "\t"
