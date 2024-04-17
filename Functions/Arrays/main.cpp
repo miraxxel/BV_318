@@ -13,56 +13,89 @@
 #include"Sort.h"
 #include"Unique.h"
 
+void Search(const int arr[], const int n);
+
 void main()
 {
 	setlocale(LC_ALL, "");
+
 	const int I_SIZE = 10;
 	int i_arr[I_SIZE];
-	//i_arr[-1] = 0;
+	////i_arr[-1] = 0;
 
-	/*int minRand, maxRand;
-	do
-	{
-		cout << "Введите минимально возможное случайное число: "; cin >> minRand;
-		cout << "Введите максимально возможное случайное число: "; cin >> maxRand;
-		if (minRand == maxRand)cout << "Пределы диапазона не должны совпадать" << endl;
-	} while (minRand == maxRand);*/
+	FillRand(i_arr, I_SIZE);
 
-	Unique(i_arr, I_SIZE);
+	///*int minRand, maxRand;
+	//do
+	//{
+	//	cout << "Введите минимально возможное случайное число: "; cin >> minRand;
+	//	cout << "Введите максимально возможное случайное число: "; cin >> maxRand;
+	//	if (minRand == maxRand)cout << "Пределы диапазона не должны совпадать" << endl;
+	//} while (minRand == maxRand);*/
+
+	//Unique(i_arr, I_SIZE);
 	Print(i_arr, I_SIZE);
-	cout << "Сумма элементов массива: " << Sum(i_arr, I_SIZE) << endl;
-	cout << "Среднее-арифметическое элементов массива: " << Avg(i_arr, I_SIZE) << endl;
-	cout << "Минимальное значение в массиве: " << minValueIn(i_arr, I_SIZE) << endl;
-	cout << "Максимальное значение в массиве: " << maxValueIn(i_arr, I_SIZE) << endl;
-	Sort(i_arr, I_SIZE);
-	Print(i_arr, I_SIZE);
-	int number_of_shifts;
-	//cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
-	//shiftRight(i_arr, I_SIZE, number_of_shifts);
+
+	//cout << "Сумма элементов массива: " << Sum(i_arr, I_SIZE) << endl;
+	//cout << "Среднее-арифметическое элементов массива: " << Avg(i_arr, I_SIZE) << endl;
+	//cout << "Минимальное значение в массиве: " << minValueIn(i_arr, I_SIZE) << endl;
+	//cout << "Максимальное значение в массиве: " << maxValueIn(i_arr, I_SIZE) << endl;
+
+	//Sort(i_arr, I_SIZE);
 	//Print(i_arr, I_SIZE);
 
-	cout << delimiter << endl;
+	//int number_of_shifts;
+	////cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
+	////shiftRight(i_arr, I_SIZE, number_of_shifts);
+	////Print(i_arr, I_SIZE);
 
-	const int D_SIZE = 8;
-	double d_arr[D_SIZE];
-	FillRand(d_arr, D_SIZE);
-	Print(d_arr, D_SIZE);
+	//cout << delimiter << endl;
 
-	cout << delimiter << endl;
+	//const int D_SIZE = 8;
+	//double d_arr[D_SIZE];
 
-	int i_arr_2[ROWS][COLS];
-	Unique(i_arr_2, ROWS, COLS);
-	//FillRand(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
-	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
-	cout << "Среднее-арифметическое элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
-	cout << "Минимальное значение в массиве: " << minValueIn(i_arr_2, ROWS, COLS) << endl;
-	cout << "Максимальное значение в массиве:" << maxValueIn(i_arr_2, ROWS, COLS) << endl;
-	//cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
-	//shiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
+	//FillRand(d_arr, D_SIZE);
+	//Print(d_arr, D_SIZE);
+
+	//cout << delimiter << endl;
+
+	//int i_arr_2[ROWS][COLS];
+
+	//Unique(i_arr_2, ROWS, COLS);
+	////FillRand(i_arr_2, ROWS, COLS);
 	//Print(i_arr_2, ROWS, COLS);
-	Sort(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
 
-	cout << delimiter << endl;
+	//cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
+	//cout << "Среднее-арифметическое элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
+	//cout << "Минимальное значение в массиве: " << minValueIn(i_arr_2, ROWS, COLS) << endl;
+	//cout << "Максимальное значение в массиве:" << maxValueIn(i_arr_2, ROWS, COLS) << endl;
+	////cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
+	//
+	////shiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
+	////Print(i_arr_2, ROWS, COLS);
+	//Sort(i_arr_2, ROWS, COLS);
+	//Print(i_arr_2, ROWS, COLS);
+
+	//cout << delimiter << endl;
+
+	Search(i_arr, I_SIZE);
+}
+
+void Search(const int arr[], const int n) 
+{
+	int countRepeat = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[i] == arr[j])
+			{
+				int numRepeat = arr[i];
+				countRepeat++;
+				cout << "Элемент: " << numRepeat << ", Повторений: " << countRepeat << endl;
+			}
+		}
+	}
+	if (countRepeat == 0)
+		cout << "В этом массиве нет повторяющихся элементов " << endl;
 }
