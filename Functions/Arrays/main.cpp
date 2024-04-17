@@ -4,8 +4,11 @@ using namespace std;
 
 #define tab "\t"
 
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
+void FillRand(int arr[], const int n, int minRand, int maxRand);
+void FillRand(double arr[], const int n, int minRand, int maxRand);
+/* % несовместим с шаблонным типом, так что функция не шаблонизируется, во всяком случае с таким форматом рандома
+если в minRand и maxRand не ставить шаблонный тип вместо int, то при шаблонизировании, массив перестает быть double 
+а ещё, условия заполнения массива, в этой функции отличаются в зависимости от типа */
 
 template<typename T>
 void Print(const T arr[], const int n);
@@ -13,12 +16,15 @@ void Print(const T arr[], const int n);
 template<typename T>
 T Sum(const T arr[], const int n);
 
+template<typename T>
+double Avg(const T arr[], const int n);
+
 void main()
 {
 	setlocale(LC_ALL, "");
 
-	const int n = 5;
-	int arr[n];
+	const int SIZE = 10;
+	int arr[SIZE];
 
 	/*int minRand, maxRand;
 	do
@@ -28,17 +34,17 @@ void main()
 		if (minRand == maxRand)cout << "Пределы диапазона не должны совпадать" << endl;
 	} while (minRand == maxRand);*/
 
-	FillRand(arr, n);
-	Print(arr, n);
-	cout << "Сумма элементов массива: " << Sum(arr, n) << endl;
-	//cout << "Среднее-арифметическое элементов массива: " << Avg(arr, n) << endl;
+	FillRand(arr, SIZE, 0, 20);
+	Print(arr, SIZE);
+	cout << "Сумма элементов массива: " << Sum(arr, SIZE) << endl;
+	cout << "Среднее-арифметическое элементов массива: " << Avg(arr, SIZE) << endl;
 
-	const int D_SIZE = 8;
-	double d_arr[D_SIZE];
+	double d_arr[SIZE];
 
-	FillRand(d_arr, D_SIZE);
-	Print(d_arr, D_SIZE);
-	cout << "Сумма элементов массива: " << Sum(d_arr, D_SIZE);
+	FillRand(d_arr, SIZE, 0.0, 20.0);
+	Print(d_arr, SIZE);
+	cout << "Сумма элементов массива: " << Sum(d_arr, SIZE) << endl;
+	cout << "Среднее-арифметическое элементов массива: " << Avg(d_arr, SIZE) << endl;
 }
 
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -53,10 +59,7 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = minRand + rand() % (maxRand - minRand);
-		//arr[i] = 50 + rand() % 50;
-		
 		//Функция rand() генерирует псевдослучайное число в диапазоне от 0 до 32 767 (RAND_MAX)
-		//Это псевдослучайное число можно вывести на экран, сохранить в переменную, или элемент массива.
 	}
 }
 void FillRand(double arr[], const int n, int minRand, int maxRand)
@@ -74,9 +77,9 @@ void FillRand(double arr[], const int n, int minRand, int maxRand)
 	{
 		arr[i] = minRand + rand() % (maxRand - minRand);
 		arr[i] /= 100;
-		//arr[i] = 50 + rand() % 50;
 	}
 }
+
 template<typename T>
 void Print(const T arr[], const int n)
 {
@@ -97,7 +100,9 @@ T Sum(const T arr[], const int n)
 	}
 	return sum;
 }
-double Avg(const int arr[], const int n)
+
+template<typename T>
+double Avg(const T arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
 }
