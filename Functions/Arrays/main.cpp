@@ -23,7 +23,7 @@ void main()
 	int i_arr[I_SIZE];
 	////i_arr[-1] = 0;
 
-	FillRand(i_arr, I_SIZE);
+	FillRand(i_arr, I_SIZE, 0, 10);
 
 	///*int minRand, maxRand;
 	//do
