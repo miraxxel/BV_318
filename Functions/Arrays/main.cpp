@@ -6,12 +6,10 @@ using namespace std;
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
-
-void Print(const int arr[], const int n);
-void Print(const double arr[], const int n);
-
-int  Sum(const int arr[], const int n);
-double Avg(const int arr[], const int n);
+template<typename T>
+void Print(const T arr[], const int n);
+template<typename T>
+T Sum(const T arr[], const int n);
 
 void main()
 {
@@ -30,12 +28,13 @@ void main()
 	FillRand(arr, n);
 	Print(arr, n);
 	cout << "Сумма элементов массива: " << Sum(arr, n) << endl;
-	cout << "Среднее-арифметическое элементов массива: " << Avg(arr, n) << endl;
+	//cout << "Среднее-арифметическое элементов массива: " << Avg(arr, n) << endl;
 
-	const int m = 8;
-	double brr[m];
-	FillRand(brr, m);
-	Print(brr, m);
+	const int D_SIZE = 8;
+	double d_arr[D_SIZE];
+	FillRand(d_arr, D_SIZE);
+	Print(d_arr, D_SIZE);
+	cout << "Сумма элементов массива: " << Sum(d_arr, D_SIZE);
 }
 
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -75,8 +74,8 @@ void FillRand(double arr[], const int n, int minRand, int maxRand)
 		//Это псевдослучайное число можно вывести на экран, сохранить в переменную, или элемент массива.
 	}
 }
-
-void Print(const int arr[], const int n)
+template<typename T>
+void Print(const T arr[], const int n)
 {
 	//Вывод массива на экран:
 	for (int i = 0; i < n; i++)
@@ -85,19 +84,10 @@ void Print(const int arr[], const int n)
 	}
 	cout << endl;
 }
-void Print(const double arr[], const int n)
+template<typename T>
+T Sum(const T arr[], const int n)
 {
-	//Вывод массива на экран:
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;
-}
-
-int  Sum(const int arr[], const int n)
-{
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
