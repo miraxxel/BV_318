@@ -6,14 +6,17 @@ using namespace std;
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
+
 template<typename T>
 void Print(const T arr[], const int n);
+
 template<typename T>
 T Sum(const T arr[], const int n);
 
 void main()
 {
 	setlocale(LC_ALL, "");
+
 	const int n = 5;
 	int arr[n];
 
@@ -32,6 +35,7 @@ void main()
 
 	const int D_SIZE = 8;
 	double d_arr[D_SIZE];
+
 	FillRand(d_arr, D_SIZE);
 	Print(d_arr, D_SIZE);
 	cout << "Сумма элементов массива: " << Sum(d_arr, D_SIZE);
@@ -50,6 +54,7 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 	{
 		arr[i] = minRand + rand() % (maxRand - minRand);
 		//arr[i] = 50 + rand() % 50;
+		
 		//Функция rand() генерирует псевдослучайное число в диапазоне от 0 до 32 767 (RAND_MAX)
 		//Это псевдослучайное число можно вывести на экран, сохранить в переменную, или элемент массива.
 	}
@@ -70,8 +75,6 @@ void FillRand(double arr[], const int n, int minRand, int maxRand)
 		arr[i] = minRand + rand() % (maxRand - minRand);
 		arr[i] /= 100;
 		//arr[i] = 50 + rand() % 50;
-		//Функция rand() генерирует псевдослучайное число в диапазоне от 0 до 32 767 (RAND_MAX)
-		//Это псевдослучайное число можно вывести на экран, сохранить в переменную, или элемент массива.
 	}
 }
 template<typename T>
