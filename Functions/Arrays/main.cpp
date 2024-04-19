@@ -8,6 +8,7 @@
 void main()
 {
 	setlocale(LC_ALL, "");
+	srand(time(NULL));
 
 	const int SIZE = 10;
 	int arr[SIZE];
@@ -31,4 +32,9 @@ void main()
 	Print(d_arr, SIZE);
 	cout << "Сумма элементов массива: " << Sum(d_arr, SIZE) << endl;
 	cout << "Среднее-арифметическое элементов массива: " << Avg(d_arr, SIZE) << endl;
+	
+	char c_arr[SIZE];
+	FillRand(c_arr, SIZE, 0, 10);
+	Print(c_arr, SIZE);
+
 }
